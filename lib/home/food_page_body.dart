@@ -3,6 +3,7 @@ import 'package:food_delivery/utils/colors.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/icon_text_widget.dart';
 import 'package:food_delivery/widgets/small_text.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({Key? key}) : super(key: key);
@@ -31,16 +32,38 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      height: 260,
-      child: PageView.builder(
+    return Column(
+      children: [
+        Container(
+          color: Colors.white,
+          height: 270,
+          child: PageView.builder(
+              controller: pageController,
+              itemBuilder: (context, index) {
+                return _buildPageItem(
+                  index,
+                );
+              }),
+        ),
+        const SizedBox(height: 5),
+        SmoothPageIndicator(
           controller: pageController,
-          itemBuilder: (context, index) {
-            return _buildPageItem(
-              index,
-            );
-          }),
+          // PageController
+          count: 6,
+          // forcing the indicator to use a specific direction
+          textDirection: TextDirection.ltr,
+          effect: const WormEffect(
+              dotHeight: 9,
+              dotWidth: 9,
+              type: WormType.thin,
+              activeDotColor: AppColor.mainColor,
+              // strokeWidth: 5,
+          ),
+          onDotClicked: (index) {
+           print(index);
+          },
+        ),
+      ],
     );
   }
 
@@ -72,11 +95,10 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       child: Stack(
         children: [
           Container(
-            height: 220,
+            height: 200,
             margin: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
-                color: index.isEven ? AppColor.sampleColor : Colors.purple,
                 image: const DecorationImage(
                   fit: BoxFit.cover,
                   image: AssetImage('assets/images/food1.jpeg'),
@@ -87,11 +109,18 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             child: Container(
               padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
               height: 120,
-              margin: const EdgeInsets.only(left: 25, right: 25),
+              margin: const EdgeInsets.only(left: 25, right: 25, bottom: 12),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20), color: Colors.white
-                  // color: index.isEven ? AppColor.sampleColor : Colors.purple,
-                  ),
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  boxShadow: const [
+                    BoxShadow(
+                        offset: Offset(0, 5),
+                        blurRadius: 5,
+                        color: Colors.black),
+                    BoxShadow(offset: Offset(5, 0), color: Colors.white),
+                    BoxShadow(offset: Offset(-5, 0), color: Colors.white),
+                  ]),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
