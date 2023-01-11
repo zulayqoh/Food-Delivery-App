@@ -57,11 +57,33 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               dotHeight: 9,
               dotWidth: 9,
               type: WormType.thin,
-              activeDotColor: AppColor.mainColor,
-              // strokeWidth: 5,
+              activeDotColor: AppColor.mainColor
+            // strokeWidth: 5
+              ),
+          onDotClicked: (index) {},
+        ),
+        const SizedBox(height: 5),
+        Container(
+          margin: const EdgeInsets.only(left: 15, top: 10),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              const BigAppText(text: 'Popular'),
+              Container(
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                width: 3,
+                height: 3,
+                decoration: BoxDecoration(
+                  color: Colors.black26,
+                  borderRadius: BorderRadius.circular(2.5),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(bottom: 2),
+                child: const SmallAppText(text: 'Food pairing'),
+              ),
+            ],
           ),
-          onDotClicked: (index) {
-          },
         ),
       ],
     );
@@ -107,7 +129,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              padding: const EdgeInsets.only(top: 10, left: 15, right: 15, bottom: 5),
+              padding: const EdgeInsets.only(
+                  top: 10, left: 15, right: 15, bottom: 5),
               height: Dimension.pageViewContainerText,
               margin: const EdgeInsets.only(left: 25, right: 25, bottom: 12),
               decoration: BoxDecoration(

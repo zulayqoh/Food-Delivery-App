@@ -20,7 +20,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.only(left: 15, top: 10, right: 15, bottom: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -42,22 +42,14 @@ class _MainFoodPageState extends State<MainFoodPage> {
                   const SizedBox(width: 20),
                   Container(
                     alignment: Alignment.center,
-                    width: 50,
-                    height: 50,
+                    width: 40,
+                    height: 40,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        color: Colors.red,
-                        gradient: const SweepGradient(
-                            center: Alignment.center,
-                            colors: [
-                              Colors.greenAccent,
-                              Colors.blueAccent,
-                              Colors.red,
-                              Colors.deepPurple,
-                              Colors.yellow
-                            ])),
+                        color: AppColor.mainColor,
+                    ),
                     child:
-                        const Icon(Icons.search, size: 40, color: Colors.black),
+                        const Icon(Icons.search, size: 25, color: Colors.white),
                   ),
                 ],
               ),
