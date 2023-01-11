@@ -16,53 +16,50 @@ class _MainFoodPageState extends State<MainFoodPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          // margin: const EdgeInsets.only(top: 30, bottom: 20),
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.only(
-                    left: 15, top: 10, right: 15, bottom: 15),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        const BigAppText(
-                            text: 'Nigeria', color: AppColor.mainColor),
-                        Row(
-                          children: const [
-                            SmallAppText(
-                              text: 'Ibadan',
-                              color: Colors.black54,
-                            ),
-                            Icon(Icons.arrow_drop_down),
-                          ],
-                        )
-                      ],
+        child: Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.only(
+                  left: 15, top: 10, right: 15, bottom: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      const BigAppText(
+                          text: 'Nigeria', color: AppColor.mainColor),
+                      Row(
+                        children: const [
+                          SmallAppText(
+                            text: 'Ibadan',
+                            color: Colors.black54,
+                          ),
+                          Icon(Icons.arrow_drop_down),
+                        ],
+                      )
+                    ],
+                  ),
+                  const SizedBox(width: 20),
+                  Container(
+                    alignment: Alignment.center,
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: AppColor.mainColor,
                     ),
-                    const SizedBox(width: 20),
-                    Container(
-                      alignment: Alignment.center,
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: AppColor.mainColor,
-                      ),
-                      child: const Icon(Icons.search,
-                          size: 25, color: Colors.white),
-                    ),
-                  ],
-                ),
+                    child: const Icon(Icons.search,
+                        size: 25, color: Colors.white),
+                  ),
+                ],
               ),
-              const Expanded(
-                child: SingleChildScrollView(
-                  child: FoodPageBody(),
-                ),
+            ),
+            const Expanded(
+              child: SingleChildScrollView(
+                child: FoodPageBody(),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
