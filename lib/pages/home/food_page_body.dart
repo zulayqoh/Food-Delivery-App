@@ -6,7 +6,7 @@ import 'package:food_delivery/widgets/icon_text_widget.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../widgets/list_view_card.dart';
+import '../../widgets/list_view_card.dart';
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({Key? key}) : super(key: key);

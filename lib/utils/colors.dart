@@ -13,4 +13,6 @@ class AppColor{
   static const Color yellowColor = Color(0xffffd379);
   static const Color yellowColorNo  = Color(0xfffa7552);
   static const Color sampleColor = Color(0xff69c5df);
+  static const Color appIconBackgroundColor = Color(0xfffcf4e4);
+  static const Color appIconColor = Color(0xff756d54);
 }
