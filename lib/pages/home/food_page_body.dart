@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery/utils/colors.dart';
-import 'package:food_delivery/utils/dimension.dart';
+import 'package:food_delivery/utils/dimensions.dart';
 import 'package:food_delivery/widgets/big_text.dart';
-import 'package:food_delivery/widgets/icon_text_widget.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
+import '../../widgets/food_detail_column.dart';
 import '../../widgets/list_view_card.dart';
 
 class FoodPageBody extends StatefulWidget {
@@ -20,7 +20,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   late double _currentPageValue = 0.0;
   final double _scaleFactor = 0.8;
 
-  final double _height = Dimension.pageViewContainerImage;
+  final double _height = Dimensions.pageViewContainerImage;
 
   @override
   void initState() {
@@ -39,7 +39,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       children: [
         Container(
           color: Colors.white,
-          height: Dimension.pageViewContainer,
+          height: Dimensions.pageViewContainer,
           child: PageView.builder(
               controller: pageController,
               itemBuilder: (context, index) {
@@ -48,7 +48,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                 );
               }),
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: Dimensions.height10),
         SmoothPageIndicator(
           controller: pageController,
           // PageController
@@ -64,7 +64,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               ),
           onDotClicked: (index) {},
         ),
-        const SizedBox(height: 5),
+        SizedBox(height: Dimensions.height5),
         Container(
           margin: const EdgeInsets.only(left: 15, top: 10, bottom: 10),
           child: Row(
@@ -87,7 +87,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             ],
           ),
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: Dimensions.height10),
         ListView.builder (
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
@@ -127,7 +127,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
       child: Stack(
         children: [
           Container(
-            height: Dimension.pageViewContainerImage,
+            height: Dimensions.pageViewContainerImage,
             margin: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
@@ -141,7 +141,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             child: Container(
               padding: const EdgeInsets.only(
                   top: 10, left: 15, right: 15, bottom: 5),
-              height: Dimension.pageViewContainerText,
+              height: Dimensions.pageViewContainerText,
               margin: const EdgeInsets.only(left: 25, right: 25, bottom: 12),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -154,49 +154,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     BoxShadow(offset: Offset(5, 0), color: Colors.white),
                     BoxShadow(offset: Offset(-5, 0), color: Colors.white),
                   ]),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const BigAppText(text: 'Bitter Orange Marinade'),
-                  Row(
-                    children: [
-                      Wrap(
-                        children: List.generate(
-                          5,
-                          (index) => const Icon(
-                            Icons.star_border,
-                            size: 15,
-                            color: Colors.yellow,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      const SmallAppText(text: '4.5'),
-                      const SizedBox(width: 10),
-                      const SmallAppText(text: '1234 comments'),
-                    ],
-                  ),
-                  const SizedBox(height: 0),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      IconText(
-                          text: 'Normal',
-                          icon: Icons.circle,
-                          color: AppColor.iconColor1),
-                      IconText(
-                          text: '1.7km',
-                          icon: Icons.location_pin,
-                          color: AppColor.mainColor),
-                      IconText(
-                          text: '32min',
-                          icon: Icons.access_time,
-                          color: AppColor.iconColor2),
-                    ],
-                  )
-                ],
-              ),
+              child: const FoodDetailColumn(),
             ),
           ),
         ],
@@ -211,3 +169,5 @@ class _FoodPageBodyState extends State<FoodPageBody> {
     pageController.dispose();
   }
 }
+
+
